@@ -30,7 +30,7 @@ pipeline {
         sh "docker login -u ${USERNAME} -p ${PASSWORD}"
         sh "docker push brainupgrade/request-logger:${env.BUILD_ID}"
         sh "docker push brainupgrade/request-logger:latest"
-        sh "kubectl set image deploy logger request-logger=brainupgrade/request-logger:${env.BUILD_ID}"
+        sh "kubectl set image -n mtvlab2303u11 deploy logger request-logger=brainupgrade/request-logger:${env.BUILD_ID}"
       }
     }
   }
