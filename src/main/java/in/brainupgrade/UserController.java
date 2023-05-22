@@ -19,7 +19,7 @@ public class UserController {
 	UserRepository userRepository;
 
 	@GetMapping(value = "/")
-	public List<User> saveRequest(HttpServletRequest request, HttpServletResponse response) {
+	public User saveRequest(HttpServletRequest request, HttpServletResponse response) {
 
 		HttpSession session = request.getSession(true);
 		String sessionID = session.getId();
@@ -39,6 +39,11 @@ public class UserController {
 		} catch (Exception exe) {
 			// ignore
 		}
+		return user;
+	}
+	@GetMapping(value = "/all")
+	public List<User> getAll(HttpServletRequest request, HttpServletResponse response) {
+
 		return userRepository.findAll();
 	}
 }
