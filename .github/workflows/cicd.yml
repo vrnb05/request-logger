@@ -33,7 +33,7 @@ jobs:
     - name: Test
       run: |
         docker run -d --name logger -p 8080:8080 brainupgrade/request-logger:${{ github.sha}}
-        curl -s localhost:8080/ | grep -q "OK"
+        curl -s localhost:8080/health | grep -q "OK"
 
     - name: Push to DockerHub
       uses: docker/build-push-action@v2
