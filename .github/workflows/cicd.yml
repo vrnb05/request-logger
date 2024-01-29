@@ -17,7 +17,7 @@ jobs:
     - name: TestDocker
       run: |
         docker ps
-        docker loging -u `${{ secrets.DOCKERHUB_USERNAME }}` -p `${{ secrets.DOCKERHUB_PASSWORD }}`      
+        docker login -u `${{ secrets.DOCKERHUB_USERNAME }}` -p `${{ secrets.DOCKERHUB_PASSWORD }}`      
 
     # Build and push Docker image
     - name: Build Image
