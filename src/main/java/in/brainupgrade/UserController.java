@@ -46,4 +46,13 @@ public class UserController {
 
 		return userRepository.findAll();
 	}
+
+	/**
+	* Health endpoint for test and monitoring purpose
+	*/
+	@GetMapping("/health")
+	public String checkHealth() {
+	// Implement your health check logic here
+	return "OK"; // A simple string indicating health status
+	}	
 }
