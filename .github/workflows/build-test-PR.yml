@@ -1,11 +1,11 @@
-name: CI-Test
+name: CI-Test-on-PR
 
 on:
   pull_request:
     branches: [ main ]
 
 jobs:
-  build-test:
+  build-test-on-pr:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -14,18 +14,10 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
     
-    # Build and push Docker image
-    - name: Build Image
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        push: false
-        tags: brainupgrade/request-logger:${{ github.sha}}
-        file: Dockerfile-multi
 
     # Test the deployment
     - name: Test
       run: |
+        docker build -t brainupgrade/request-logger:${{ github.sha}} -f Dockerfile-multi .
         docker run -d --name logger -p 8080:8080 brainupgrade/request-logger:${{ github.sha}}
         curl -s localhost:8080/ | grep -q "OK"
-
