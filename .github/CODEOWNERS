@@ -1,0 +1,13 @@
+# Lines starting with '#' are comments.
+# Example of a `CODEOWNERS` file
+
+# These people are the default owners for everything in the repo.
+* @brainupgrade-in
+
+# Order is important. The last matching pattern takes the most precedence.
+# This means @doc-owner will be requested for review when changes are
+# made to any files under docs/
+/docs/  @brainupgrade-in
+
+# You can also specify email addresses if they are associated with a GitHub account.
+/src/   @brainupgrade-in
