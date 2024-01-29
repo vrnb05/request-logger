@@ -45,8 +45,7 @@ jobs:
     - name: Test
       run: |
         docker run -d --name logger -p 8080:8080 brainupgrade/request-logger:${{ github.sha}}
-        sleep 10
-        curl -s localhost:8080/ | grep -q "OK"
+        while ! docker exec logger curl -s http://localhost:8080/ | grep -q "OK"; do sleep 1; done
 
     # Build and push Docker image
     - name: Build Image
