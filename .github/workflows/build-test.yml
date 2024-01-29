@@ -1,11 +1,11 @@
-name: CI-CD
+name: CI-Test
 
 on:
   pull_request:
     branches: [ main ]
 
 jobs:
-  build-test-deploy:
+  build-test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
