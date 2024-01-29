@@ -21,6 +21,7 @@ jobs:
         context: .
         push: false
         tags: brainupgrade/request-logger:${{ github.sha}}
+        file: Dockerfile-multi
 
     # Test the deployment
     - name: Test
