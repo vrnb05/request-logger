@@ -39,6 +39,7 @@ jobs:
         file: Dockerfile-multi
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache
+        load: true
 
     # Test the deployment
     - name: Test
@@ -59,4 +60,5 @@ jobs:
         file: Dockerfile-multi
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache
+        load: true
 
