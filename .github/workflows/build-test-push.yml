@@ -44,9 +44,7 @@ jobs:
     # Test the deployment
     - name: Test
       run: |
-        docker run  --cache-from type=local,src=/tmp/.buildx-cache \
-        --cache-to type=local,dest=/tmp/.buildx-cache \ 
-        -d --name logger -p 8080:8080 brainupgrade/request-logger:${{ github.sha}}
+        docker run -d --name logger -p 8080:8080 brainupgrade/request-logger:${{ github.sha}}
         sleep 10
         curl -s localhost:8080/ | grep -q "OK"
 
