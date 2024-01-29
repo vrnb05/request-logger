@@ -1,0 +1,11 @@
+# .github/workflows/build.yml
+
+name: Build Project
+
+on: [pull_request]
+
+jobs:
+  call-reusable-workflow:
+    uses: brainupgrade-in/github-workflows/.github/workflows/maven-build.yml@main
+    with:
+      java-version: '11'
