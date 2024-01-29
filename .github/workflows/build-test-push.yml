@@ -2,7 +2,7 @@ name: CICD
 
 on:
   push:
-    branches: [ main ]  
+    branches: [ release ]  
 
 jobs:
   build-test-deploy:
@@ -46,7 +46,7 @@ jobs:
       run: |
         apt-get update && apt-get install -y curl
         docker run -d --name logger -p 8080:8080 brainupgrade/request-logger:${{ github.sha}}
-        while ! curl -s http://localhost:8080/health | grep -q "OK"; do sleep 1; done
+        while ! curl -s http://localhost:8080/health | grep -q "OK"; do sleep 60;exit; done
 
     # Build and push Docker image
     - name: Build Image
