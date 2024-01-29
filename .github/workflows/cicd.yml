@@ -13,13 +13,11 @@ jobs:
     # Set up Docker Buildx
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
-
-    # Login to DockerHub
-    - name: Login to DockerHub
-      uses: docker/login-action@v1
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    
+    - name: TestDocker
+      run: |
+        docker ps
+        docker loging -u `${{ secrets.DOCKERHUB_USERNAME }}` -p `${{ secrets.DOCKERHUB_PASSWORD }}`      
 
     # Build and push Docker image
     - name: Build Image
