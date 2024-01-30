@@ -1,25 +1,24 @@
 {
     "name": "Java - Spring Boot - Request Logger App",
     "image": "mcr.microsoft.com/vscode/devcontainers/java:0-11",
-    
-    "settings": { 
-        "terminal.integrated.shell.linux": "/bin/bash",
-        "java.home": "/docker-java-home",
-        "spring-boot.ls.java.home": "/docker-java-home"
+    "customizations": {
+        // Configure properties specific to VS Code.
+        "vscode": {
+            // Set *default* container specific settings.json values on container create.
+            "settings": {
+                "terminal.integrated.shell.linux": "/bin/bash"
+            },
+            "extensions": [
+                "vscjava.vscode-java-pack",
+                "vscjava.vscode-spring-boot-dashboard",
+                "vscjava.vscode-spring-initializr",
+                "pivotal.vscode-boot-dev-pack"
+            ],
+        }
     },
-
-    "extensions": [
-        "vscjava.vscode-java-pack",
-        "vscjava.vscode-spring-boot-dashboard",
-        "vscjava.vscode-spring-initializr",
-        "pivotal.vscode-boot-dev-pack"
-    ],
-
     "forwardPorts": [
         8080
     ],
-
     "postCreateCommand": "./mvnw spring-boot:run",
-
-    "remoteUser": "vscode"
+    "remoteUser": "vscode" 
 }
